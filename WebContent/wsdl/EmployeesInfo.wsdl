@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.imcs.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.imcs.com" xmlns:intf="http://services.imcs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.imcs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getAllEmployeeInfo">
+    <complexType/>
+   </element>
+   <element name="getAllEmployeeInfoResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllEmployeeInfoReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getAllEmployeeInfoRequest">
+
+      <wsdl:part element="impl:getAllEmployeeInfo" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllEmployeeInfoResponse">
+
+      <wsdl:part element="impl:getAllEmployeeInfoResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmployeesInfo">
+
+      <wsdl:operation name="getAllEmployeeInfo">
+
+         <wsdl:input message="impl:getAllEmployeeInfoRequest" name="getAllEmployeeInfoRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllEmployeeInfoResponse" name="getAllEmployeeInfoResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmployeesInfoSoapBinding" type="impl:EmployeesInfo">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAllEmployeeInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllEmployeeInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllEmployeeInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmployeesInfoService">
+
+      <wsdl:port binding="impl:EmployeesInfoSoapBinding" name="EmployeesInfo">
+
+         <wsdlsoap:address location="http://localhost:8081/BottomUpSoapServicesPrj/services/EmployeesInfo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
